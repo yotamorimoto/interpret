@@ -4,7 +4,10 @@
 
 engine.name = 'Interpret'
 
-local on1 = '~f1={SinOsc.ar([440,320].choose)*0.1}.play;'
+-- quote is ok for single line code
+local on1 = '~f1={SinOsc.ar([440,320].choose)*0.1}.play'
+
+-- use [[ ]] for multiline code
 local on2 = [[
 ~f2={
 Klank.ar(`[
@@ -18,7 +21,8 @@ Klank.ar(`[
 local off1 = '~f1.release'
 local off2 = '~f2.release'
 
-local function interpret(txt)
+-- should global to fire from maiden REPL
+function interpret(txt)
   engine.interpret(txt)
   screen.clear()
   screen.move(0,20)
