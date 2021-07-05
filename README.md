@@ -1,4 +1,4 @@
 # interpret
-just-interpret-engine for norns
+just-interpret-engine for norns sound computer
 
 ![screenshot](interpret.png)
