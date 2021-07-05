@@ -4,17 +4,19 @@
 
 engine.name = 'Interpret'
 
-local on1 = 'f={SinOsc.ar([440,320].choose)*0.1}.play'
-local on2 = [[f={
+local on1 = '~f1={SinOsc.ar([440,320].choose)*0.1}.play;'
+local on2 = [[
+~f2={
 Klank.ar(`[
  Array.exprand(12, 200, 4000),
  nil,
  Array.exprand(12, 0.1, 2)
  ], Decay.ar(Dust.ar(10), 0.01, PinkNoise.ar(0.01))
  )
-}.play
+}.play;
 ]]
-local off = 'f.release'
+local off1 = '~f1.release'
+local off2 = '~f2.release'
 
 local function interpret(txt)
   engine.interpret(txt)
@@ -38,9 +40,9 @@ function redraw()
 end
 
 function key(n,z)
-  -- print('key #' .. n .. " is " .. z)
-  if n == 2 and z == 1 then interpret(on1)
-  elseif n == 3 and z == 1 then interpret(on2)
+  if n == 2 then
+    if z == 1 then interpret(on1) else interpret(off1) end
+  elseif n == 3 then 
+    if z == 1 then interpret(on2) else  interpret(off2) end
   end
-  if z == 0 then interpret(off) end
 end
