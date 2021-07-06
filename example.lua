@@ -47,6 +47,6 @@ function key(n,z)
   if n == 2 then
     if z == 1 then interpret(on1) else interpret(off1) end
   elseif n == 3 then 
-    if z == 1 then interpret(on2) else  interpret(off2) end
+    if z == 1 then interpret(on2) else interpret(off2) end
   end
 end

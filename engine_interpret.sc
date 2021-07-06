@@ -8,7 +8,7 @@ Engine_Interpret : CroneEngine {
 		group = ParGroup.tail(context.xg);
 		
 		this.addCommand(\interpret, "s", { |m|
-		  m[1].asString.interpret;
+		  m[1].asString.compile.();
 		});
 	}
 	free { context.server.freeAll }
