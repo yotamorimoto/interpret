@@ -1,4 +1,5 @@
 -- just-interpret-engine
+-- example #2
 
 engine.name = 'Interpret'
 
@@ -6,7 +7,7 @@ local synthdef = [[
 SynthDef(\fsine, { |out=0, gate=1, freq=440, amp=0.1|
   var sig, env;
   sig = FSinOsc.ar(freq,0,amp);
-  env = Env.asr.kr(2,gate);
+  env = Env.asr(3).kr(2,gate);
   sig = sig * env;
   Out.ar(out,sig);
 }).add;
@@ -39,14 +40,16 @@ end
 
 function redraw()
   screen.clear()
-  screen.move(0,20)
   screen.level(15)
-  screen.text('key1 L on/off')
+  screen.move(0,10)
+  screen.text('off oscillators before quit!')
   screen.move(0,30)
-  screen.text('key2 R on/off')
+  screen.text('key1 L on/off')
   screen.move(0,40)
-  screen.text('enc1 L freq')
+  screen.text('key2 R on/off')
   screen.move(0,50)
+  screen.text('enc1 L freq')
+  screen.move(0,60)
   screen.text('enc2 R freq')
   screen.stroke()
   screen.update()

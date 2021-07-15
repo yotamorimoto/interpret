@@ -1,9 +1,10 @@
 -- just-interpret-engine
+-- example #1
 
 engine.name = 'Interpret'
 
 -- quote is ok for single line code
-local on1 = '~f1={SinOsc.ar([440,320].choose)*0.1}.play'
+local on1 = '~f1={SinOsc.ar([440,320].choose)*0.1}.play(outbus:0)'
 
 -- use [[ ]] for multiline code
 local on2 = [[
@@ -14,7 +15,7 @@ Klank.ar(`[
  Array.exprand(12, 0.1, 2)
  ], Decay.ar(Dust.ar(10), 0.01, PinkNoise.ar(0.01))
  )
-}.play;
+}.play(outbus:1);
 ]]
 local off1 = '~f1.release'
 local off2 = '~f2.release'
