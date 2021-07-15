@@ -1,5 +1,3 @@
--- 
--- 
 -- just-interpret-engine
 
 engine.name = 'Interpret'
