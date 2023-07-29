@@ -22,9 +22,9 @@ local freq1 = 440
 local freq2 = 440
 
 function init()
-  audio.rev_off()
   interpret(synthdef)
 end
+
 -- should global to fire from maiden REPL
 function interpret(txt)
   engine.interpret(txt)

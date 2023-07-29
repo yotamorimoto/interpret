@@ -1,15 +1,13 @@
 Engine_Interpret : CroneEngine {
 
-	var group;
+	var group, addr;
 
 	*new { |context, doneCallback| ^super.new(context, doneCallback) }
 
 	alloc {
-		group = ParGroup.tail(context.xg);
-
 		this.addCommand(\interpret, "s", { |m|
-		  m[1].asString.compile.();
+		  var k = m[1].asString.compile.();
+		  postf("interpreter -> %\n", k);""
 		});
 	}
-	// free { context.server.freeAll }
 }
